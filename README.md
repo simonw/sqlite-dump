@@ -14,7 +14,16 @@ Install this plugin using `pip`:
 
 ## Usage
 
-Usage instructions go here.
+To loop through lines of SQL that can recreate a SQLite database file:
+
+```python
+import sqlite3
+from sqlite_dump import iterdump
+
+conn = sqlite3.connect(db_path)
+for line in iterdump(conn):
+    print(line)
+```
 
 ## Development
 
