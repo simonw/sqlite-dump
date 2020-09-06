@@ -1,2 +1,2 @@
-def example_function():
-    return 1 + 1
+def iterdump(conn):
+    yield from conn.iterdump()

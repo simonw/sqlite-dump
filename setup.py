@@ -28,6 +28,6 @@ setup(
     version=VERSION,
     packages=["sqlite_dump"],
     install_requires=[],
-    extras_require={"test": ["pytest"]},
+    extras_require={"test": ["pytest", "sqlite-utils"]},
     tests_require=["sqlite-dump[test]"],
 )
