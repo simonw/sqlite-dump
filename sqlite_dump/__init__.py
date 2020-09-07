@@ -2,6 +2,7 @@
 # part of the Python standard library, see
 # https://github.com/python/cpython/blob/v3.8.5/Lib/sqlite3/dump.py
 
+CREATE_TABLE_PREFIX = "CREATE TABLE "
 
 def iterdump(connection):
     cu = connection.cursor()
@@ -35,6 +36,10 @@ def iterdump(connection):
             ).format(qtable, sql)
             # Skip the bit that writes the INSERTs for this table
             continue
+        elif sql.upper().startswith(CREATE_TABLE_PREFIX):
+            yield "CREATE TABLE IF NOT EXISTS {};".format(
+                sql[len(CREATE_TABLE_PREFIX):]
+            )
         else:
             yield "{0};".format(sql)
 

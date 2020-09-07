@@ -21,7 +21,7 @@ def test_basic(db_and_path):
     lines = list(iterdump(conn))
     assert lines == [
         "BEGIN TRANSACTION;",
-        "CREATE TABLE [dogs] (\n   [id] INTEGER PRIMARY KEY,\n   [name] TEXT,\n   [age] INTEGER\n);",
+        "CREATE TABLE IF NOT EXISTS [dogs] (\n   [id] INTEGER PRIMARY KEY,\n   [name] TEXT,\n   [age] INTEGER\n);",
         "INSERT INTO \"dogs\" VALUES(1,'Cleo',5);",
         "INSERT INTO \"dogs\" VALUES(2,'Pancakes',4);",
         "COMMIT;",
