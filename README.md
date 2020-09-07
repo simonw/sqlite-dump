@@ -4,7 +4,21 @@
 [![Changelog](https://img.shields.io/github/v/release/simonw/sqlite-dump?label=changelog)](https://github.com/simonw/sqlite-dump/releases)
 [![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](https://github.com/simonw/sqlite-dump/blob/master/LICENSE)
 
-An improved version of .iterdump() for sqlite3
+An improved version of `.iterdump()` for Python's `sqlite3`
+
+## Background
+
+Python's `sqlite3` standard library module provides a method for dumping the contents of a database out as lines of SQL that can be used to recreate the database:
+
+```python
+import sqlite3
+
+conn = sqlite3.connect("mydb.db")
+for line in conn.iterdump():
+    print(line)
+```
+
+This mechanism is convenient but unfortunately does not support every SQLite feature. In particular it doesn't correctly dump databases that use SQLite's full-text search functionality from the [FTS module](https://www.sqlite.org/fts5.html). This library offers an improved alternative to the `.iterdump()` method.
 
 ## Installation
 
